@@ -35,7 +35,7 @@ class StringBuffer
   toString: =>
     @buffer.join('')
 
-class Base64
+Base64 = {
   codex: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/='
 
   encode: (input) =>
@@ -72,7 +72,7 @@ class Base64
 
   decode: (input) =>
     output     = new StringBuffer
-    enumerator = new Base64DecodeEnumerator
+    enumerator = new Base64DecodeEnumerator(input)
 
     while enumerator.moveNext()
       charCode = enumerator.current
@@ -106,6 +106,7 @@ class Base64
         )
 
     output.toString()
+}
 
 class Utf8EncodeEnumerator
   constructor: (input) ->
