@@ -61,8 +61,12 @@ class Base64
       else if isNan(chr3)
         enc4 = 64
 
-      output.append(@codex.charAt(enc1) + @codex.charAt(enc2) 
-        + @codex.charAt(enc3) + @codex.charAt(enc4))
+      output.append(
+        @codex.charAt(enc1) + 
+        @codex.charAt(enc2) + 
+        @codex.charAt(enc3) + 
+        @codex.charAt(enc4)
+      )
 
     output.toString()
 
@@ -80,7 +84,11 @@ class Base64
         enumerator.moveNext()
         charCode2 = enumerator.current
 
-        output.append(String.fromCharCode(((charCode & 31) << 6) | (charCode2 & 63)))
+        output.append(
+          String.fromCharCode(
+            ((charCode & 31) << 6) | (charCode2 & 63)
+          )
+        )
       
       else
         enumerator.moveNext()
@@ -89,7 +97,13 @@ class Base64
         enumerator.moveNext()
         charCode3 = enumerator.current
 
-        output.append(String.fromCharCode(((charCode & 15) << 12) | ((charCode2 & 63) << 6) | (charCode3 & 63)))
+        output.append(
+          String.fromCharCode(
+            ((charCode & 15) << 12) | 
+            ((charCode2 & 63) << 6) | 
+            (charCode3 & 63)
+          )
+        )
 
     output.toString()
 
